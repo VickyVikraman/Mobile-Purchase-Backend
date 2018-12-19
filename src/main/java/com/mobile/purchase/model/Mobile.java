@@ -19,7 +19,23 @@ public class Mobile {
 	private Dimension dimension;
 	private int stock;
 	private List<String> file;
+	private int price;
+	private int qty;
 	
+	
+	
+	public int getQty() {
+		return qty;
+	}
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public List<String> getFile() {
 		return file;
 	}

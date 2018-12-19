@@ -43,6 +43,7 @@ public class GetAllMobile {
 		dimension.setHeight(mobileDetails.getHeight());
 		mobile.setDimension(dimension);
 		
+		mobile.setPrice(mobileDetails.getPrice());
 		mobile.setStock(mobileDetails.getStock());
 		
 		List<String> file = changeIndexToBase64(mobileDetails.getImages(),mobileDetails.getManufacturer());

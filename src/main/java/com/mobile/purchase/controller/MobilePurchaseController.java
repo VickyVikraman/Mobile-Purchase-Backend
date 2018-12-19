@@ -42,14 +42,12 @@ public class MobilePurchaseController {
 		return mobileService.getAllMobiles();
 	}
 	
-	
 	@RequestMapping(value="/update")
 	public void updateMobile(@RequestBody Mobile mobile)
 	{
 		mobileService.updateMobile(mobile);
 		System.out.println("success");
 	}
-	
 	
 	@RequestMapping(value="/delete")
 	public void deleteMobile(@RequestParam int id)
@@ -58,5 +56,10 @@ public class MobilePurchaseController {
 		mobileService.deleteMobile(id);
 	}
 	
+	@RequestMapping(value="/buy")
+	public void buyNow(@RequestBody Mobile[] mobile)
+	{
+		mobileService.buyMobile(mobile);
+	}
 	
 }

@@ -24,6 +24,7 @@ public class UpdateMobile {
 		mobileEntity.setDepth(mobile.getDimension().getDepth());
 		mobileEntity.setHeight(mobile.getDimension().getHeight());
 		mobileEntity.setStock(mobile.getStock());
+		mobileEntity.setPrice(mobile.getPrice());
 		return mobileEntity;
 	}
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.mobile.purchase.dao.MobilePurchase;
 import com.mobile.purchase.mapper.AddMobileServiceMapper;
+import com.mobile.purchase.mapper.BuyMobileServiceMapper;
 import com.mobile.purchase.mapper.GetAllMobile;
 import com.mobile.purchase.mapper.UpdateMobile;
 import com.mobile.purchase.model.Mobile;
@@ -66,4 +67,22 @@ public class MobileService {
 	{
 		mobilePurchase.deleteById(id);
 	}
+	
+	@Autowired
+	BuyMobileServiceMapper buyMobileMapper;
+	
+	public void buyMobile(Mobile[] mobile)
+	{
+		MobileEntity getMobileEntity=new MobileEntity();
+		Mobile getMobile = new Mobile();
+		MobileEntity mobileEntity=null;
+		for(int i=0;i<mobile.length;i++)
+		{
+			getMobileEntity=mobilePurchase.findByMobileId(mobile[i].getId());
+			mobileEntity=buyMobileMapper.buyMobile(mobile[i],getMobileEntity);
+			mobilePurchase.save(mobileEntity);
+		}
+	}
+	
+	
 }

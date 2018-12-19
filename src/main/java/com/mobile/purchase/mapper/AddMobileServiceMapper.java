@@ -32,6 +32,7 @@ public class AddMobileServiceMapper {
 		mobileEntity.setDepth(mobile.getDimension().getDepth());
 		mobileEntity.setHeight(mobile.getDimension().getHeight());
 		mobileEntity.setStock(mobile.getStock());
+		mobileEntity.setPrice(mobile.getPrice());
 		String imageNames=base64ToImg(mobile.getFile(),mobile.getManufacturer());
 		mobileEntity.setImages(imageNames);
 		return mobileEntity;

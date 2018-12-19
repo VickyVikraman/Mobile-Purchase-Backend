@@ -50,6 +50,9 @@ public class MobileEntity {
 	@Column(name="stock")
 	private int stock;
 	
+	@Column(name="price")
+	private int price;
+	
 	@Column(name="images")
 	private String images;
 	
@@ -164,9 +167,12 @@ public class MobileEntity {
 	public void setHeight(float height) {
 		this.height = height;
 	}
-	
-	
-	
-	
-	
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
 }
