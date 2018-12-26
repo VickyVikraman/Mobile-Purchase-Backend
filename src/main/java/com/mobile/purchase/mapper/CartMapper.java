@@ -11,24 +11,41 @@ import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Component;
 
+import com.mobile.purchase.model.Cart;
+import com.mobile.purchase.model.CartEntity;
 import com.mobile.purchase.model.Dimension;
 import com.mobile.purchase.model.Mobile;
 import com.mobile.purchase.model.MobileEntity;
 import com.mobile.purchase.model.Storage;
 
 @Component
-public class GetAllMobile {
-	
+public class CartMapper {
 	String base64Image;
 	String pathFile;
-	public Mobile getMobile(MobileEntity mobileDetails)
+	
+	public CartEntity addMobileToCart(Cart cart)
 	{
-		Mobile mobile=new Mobile();
+		CartEntity cartEntity = new CartEntity();
+		cartEntity.setMobile_id(cart.getId());
+		cartEntity.setQty(cart.getQty());
+		return cartEntity;
+	}
+	
+	public Cart getCartItem(CartEntity cartEntity)
+	{
+		Cart cart = new Cart();
+		cart.setId(cartEntity.getMobile_id());
+		cart.setQty(cartEntity.getQty());
+		return cart;
+	}
+	
+	public Mobile getCartItemById(MobileEntity mobileDetails,int qty)
+	{
+		Mobile mobile= new Mobile();
 		mobile.setId(mobileDetails.getMobileId());
 		mobile.setName(mobileDetails.getName());
 		mobile.setManufacturer(mobileDetails.getManufacturer());
 		mobile.setOs(mobileDetails.getOs());
-		mobile.setVersion(mobileDetails.getVersion());
 		mobile.setBattery(mobileDetails.getBattery());
 		mobile.setWeight(mobileDetails.getWeight());
 		
@@ -46,6 +63,7 @@ public class GetAllMobile {
 		
 		mobile.setPrice(mobileDetails.getPrice());
 		mobile.setStock(mobileDetails.getStock());
+		mobile.setQty(qty);
 		
 		List<String> file = changeIndexToBase64(mobileDetails.getImages(),mobileDetails.getManufacturer());
 		mobile.setFile(file);
@@ -78,5 +96,5 @@ public class GetAllMobile {
 		}
 		return "data:image/jpeg;base64,"+base64Image;
 	}
-	
+
 }

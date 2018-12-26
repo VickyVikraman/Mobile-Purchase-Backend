@@ -23,6 +23,7 @@ public class AddMobileServiceMapper {
 		mobileEntity.setName(mobile.getName());
 		mobileEntity.setManufacturer(mobile.getManufacturer());
 		mobileEntity.setOs(mobile.getOs());
+		mobileEntity.setVersion(mobile.getVersion());
 		mobileEntity.setBattery(mobile.getBattery());
 		mobileEntity.setWeight(mobile.getWeight());
 		mobileEntity.setRam(mobile.getStorage().getRam());

@@ -8,7 +8,7 @@ import com.mobile.purchase.model.MobileEntity;
 @Component
 public class UpdateMobile {
 	
-	public MobileEntity updateMobile(Mobile mobile)
+	public MobileEntity updateMobile(Mobile mobile,String images)
 	{
 		MobileEntity mobileEntity = new MobileEntity();
 		mobileEntity.setMobileId(mobile.getId());
@@ -17,6 +17,7 @@ public class UpdateMobile {
 		mobileEntity.setBattery(mobile.getBattery());
 		mobileEntity.setWeight(mobile.getWeight());
 		mobileEntity.setOs(mobile.getOs());
+		mobileEntity.setVersion(mobile.getVersion());
 		mobileEntity.setRam(mobile.getStorage().getRam());
 		mobileEntity.setInternal(mobile.getStorage().getInternal());
 		mobileEntity.setExpandable(mobile.getStorage().getExpandable());
@@ -25,6 +26,7 @@ public class UpdateMobile {
 		mobileEntity.setHeight(mobile.getDimension().getHeight());
 		mobileEntity.setStock(mobile.getStock());
 		mobileEntity.setPrice(mobile.getPrice());
+		mobileEntity.setImages(images);
 		return mobileEntity;
 	}
 

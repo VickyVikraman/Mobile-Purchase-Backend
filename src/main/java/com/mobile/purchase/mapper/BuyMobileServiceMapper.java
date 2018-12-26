@@ -28,5 +28,26 @@ public class BuyMobileServiceMapper {
 		updateMobileEntity.setImages(mobileEntity.getImages());
 		return updateMobileEntity;
 	}
+	
+	public MobileEntity removeFromCart(int qty,MobileEntity mobileEntity)
+	{
+		MobileEntity updateMobileEntity = new MobileEntity();
+		updateMobileEntity.setMobileId(mobileEntity.getMobileId());
+		updateMobileEntity.setName(mobileEntity.getName());
+		updateMobileEntity.setManufacturer(mobileEntity.getManufacturer());
+		updateMobileEntity.setBattery(mobileEntity.getBattery());
+		updateMobileEntity.setWeight(mobileEntity.getWeight());
+		updateMobileEntity.setOs(mobileEntity.getOs());
+		updateMobileEntity.setRam(mobileEntity.getRam());
+		updateMobileEntity.setInternal(mobileEntity.getInternal());
+		updateMobileEntity.setExpandable(mobileEntity.getExpandable());
+		updateMobileEntity.setWidth(mobileEntity.getWidth());
+		updateMobileEntity.setDepth(mobileEntity.getDepth());
+		updateMobileEntity.setHeight(mobileEntity.getHeight());
+		updateMobileEntity.setStock(mobileEntity.getStock()-qty);
+		updateMobileEntity.setPrice(mobileEntity.getPrice());
+		updateMobileEntity.setImages(mobileEntity.getImages());
+		return updateMobileEntity;
+	}
 
 }

@@ -2,10 +2,6 @@ package com.mobile.purchase.model;
 
 import java.util.List;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Mobile {
 	
@@ -13,6 +9,7 @@ public class Mobile {
 	private String name;
 	private String manufacturer;
 	private String os;
+	private String version;
 	private int battery;
 	private float weight;
 	private Storage storage;
@@ -65,6 +62,12 @@ public class Mobile {
 	}
 	public void setOs(String os) {
 		this.os = os;
+	}
+	public String getVersion() {
+		return version;
+	}
+	public void setVersion(String version) {
+		this.version = version;
 	}
 	public int getBattery() {
 		return battery;

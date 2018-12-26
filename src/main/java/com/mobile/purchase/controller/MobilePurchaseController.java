@@ -1,48 +1,39 @@
 package com.mobile.purchase.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Base64;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mobile.purchase.Impl.MobileService;
+import com.mobile.purchase.model.Cart;
 import com.mobile.purchase.model.Mobile;
+import com.mobile.purchase.model.OS;
 
 @RestController
 public class MobilePurchaseController {
 	
-	private final Path rootLocation = Paths.get("ProfilePictureStore");
 	@Autowired
 	MobileService mobileService;
 	
 	@RequestMapping(value="/add")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void addMobile(@RequestBody Mobile mobile )
 	{
 		mobile = mobileService.add(mobile);	
 	}
 	
 	@RequestMapping(value="/get")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Mobile[] getAllMobiles()
 	{
 		return mobileService.getAllMobiles();
 	}
 	
 	@RequestMapping(value="/update")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void updateMobile(@RequestBody Mobile mobile)
 	{
 		mobileService.updateMobile(mobile);
@@ -50,6 +41,7 @@ public class MobilePurchaseController {
 	}
 	
 	@RequestMapping(value="/delete")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void deleteMobile(@RequestParam int id)
 	{
 		System.out.println(id);
@@ -57,9 +49,53 @@ public class MobilePurchaseController {
 	}
 	
 	@RequestMapping(value="/buy")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public void buyNow(@RequestBody Mobile[] mobile)
 	{
 		mobileService.buyMobile(mobile);
 	}
 	
+	@RequestMapping(value="/getCartItem")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Cart[] getCartItem()
+	{
+		return mobileService.getCartItem();
+	}
+	
+	@RequestMapping(value="/addToCart")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public long addToCart(@RequestBody Cart cart)
+	{
+		return mobileService.addMobileToCart(cart);
+	}
+	
+	
+	@RequestMapping(value="/getItemByIds")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public Mobile[] getCartItemsById(@RequestBody Cart[] cart)
+	{
+		return mobileService.getMobileById(cart);
+	}
+	
+	@RequestMapping(value="/deleteItem")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public void deleteItem(@RequestParam int id)
+	{
+		mobileService.deleteItem(id);
+	}
+	
+	@RequestMapping(value="/deleteAll")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public boolean deleteAll(@RequestBody Cart[] cart)
+	{
+		
+		return mobileService.deleteAll(cart);
+	}
+	
+	@RequestMapping(value="/version")
+	@CrossOrigin(origins = "http://localhost:4200")
+	public OS[] version(@RequestParam String os)
+	{
+		return mobileService.version(os);
+	}
 }

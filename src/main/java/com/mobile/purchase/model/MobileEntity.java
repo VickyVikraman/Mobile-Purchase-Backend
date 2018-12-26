@@ -1,6 +1,6 @@
 package com.mobile.purchase.model;
 
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +22,9 @@ public class MobileEntity {
 	
 	@Column(name="os")
 	private String os;
+	
+	@Column(name="version")
+	private String version;
 	
 	@Column(name="battery")
 	private int battery;
@@ -102,6 +105,14 @@ public class MobileEntity {
 
 	public void setOs(String os) {
 		this.os = os;
+	}
+	
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
 	}
 
 	public int getBattery() {
